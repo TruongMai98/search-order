@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Search } from "@mui/icons-material";
 import { IconButton, TextField, InputAdornment } from "@mui/material";
 import {
@@ -10,12 +10,9 @@ import {
 import FlexBetween from "./FlexBetween";
 
 const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
-  console.log("🚀 ~ file: DataGridCustomToolbar.jsx:13 ~ DataGridCustomToolbar ~ searchInput:", searchInput)
-  const handleClick = (e) => {
-    e.preventDefault();
-    setSearch(searchInput);
-    setSearchInput("");
-  };
+  useEffect(() => {
+    setSearch(searchInput)
+  }, [searchInput, setSearch])
 
   return (
     <GridToolbarContainer>
@@ -39,8 +36,7 @@ const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
                     setSearch(searchInput);
                     setSearchInput("");
                   }}
-                > 
-                {/* <IconButton onClick={handleClick}> */}
+                >
                   <Search />
                 </IconButton>
               </InputAdornment>

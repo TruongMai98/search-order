@@ -57,9 +57,10 @@ export const api = createApi({
     searchOrderByCustomerId: build.query({
       query: (id) => {
         return {
-          url: `/orders/search/${id}`,
+          url: `/orders/search?id=${id}`,
           method: "GET",
           headers: config.headers,
+          // params: id
         };
       },
       providesTags: ["Order"],
